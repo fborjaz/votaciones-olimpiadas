@@ -1,4 +1,4 @@
-import { CURSOS, FIREBASE_CONFIG, RESULTADOS_A, RESULTADOS_TEXTO } from "./config.js";
+import { CURSOS, FIREBASE_CONFIG, RESULTADOS_A, RESULTADOS_TEXTO, VERSION_VOTACION } from "./config.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +13,11 @@ const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
 const rand = (a, b) => a + Math.random() * (b - a);
 
 // ---------- identidad del dispositivo ----------
+if (localStorage.getItem("ppv_version") !== VERSION_VOTACION) { // votación reiniciada
+  localStorage.removeItem(LS_VOTE);
+  localStorage.removeItem(LS_DEVICE);
+  localStorage.setItem("ppv_version", VERSION_VOTACION);
+}
 function getDeviceId() {
   let id = localStorage.getItem(LS_DEVICE);
   if (!id) {

@@ -30,3 +30,8 @@ export const FIREBASE_CONFIG = {
 //    Antes de esa hora todos ven un cronómetro en lugar de los números.
 export const RESULTADOS_A = "2026-10-09T10:30:00-05:00";
 export const RESULTADOS_TEXTO = "10:30 a. m.";
+
+// 4) Versión de la votación. Si la cambias (por ejemplo "2" → "3"), todos los
+//    celulares olvidan su voto anterior y pueden votar de nuevo.
+//    Recuerda borrar también los documentos de la colección "votos" en Firebase.
+export const VERSION_VOTACION = "2";
