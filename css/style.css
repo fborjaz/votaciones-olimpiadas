@@ -154,7 +154,9 @@ body.has-voted .card:not(.voted) .btn { display: none; }
 .lane .label > span:first-child { display: inline-flex; align-items: center; }
 .medal-hang { position: absolute; top: 1.6rem; right: .9rem; width: 2.6rem; z-index: 3; transform-origin: 50% 0; pointer-events: none; filter: drop-shadow(0 .25rem .25rem rgba(0,0,0,.3)); }
 .medal-hang svg { width: 100%; height: auto; display: block; }
-.results-inner { max-width: 60rem; margin-inline: auto; }
+.results-inner { max-width: 72rem; margin-inline: auto; text-align: center; }
+.results .lanes { text-align: left; }
+.clock { justify-content: center; }
 .results h2 { font-size: clamp(2rem, 5vw, 3.8rem); }
 .results .status { color: #b9d4f5; }
 .lanes { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: .5rem; }
