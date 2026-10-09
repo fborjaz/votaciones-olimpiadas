@@ -96,7 +96,27 @@ function buildCards() {
 }
 
 // ---------- visor ----------
-const viewer = $("#viewer");
+const viewerOv = $("#viewerOv");
+const confirmOv = $("#confirmOv");
+let lastFocus = null;
+function openOv(ov) {
+  lastFocus = document.activeElement;
+  ov.hidden = false;
+  document.body.style.overflow = "hidden";
+  ov.querySelector("button")?.focus({ preventScroll: true });
+}
+function closeOv(ov) {
+  ov.hidden = true;
+  if (viewerOv.hidden && confirmOv.hidden) document.body.style.overflow = "";
+  lastFocus?.focus?.({ preventScroll: true });
+}
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  if (!confirmOv.hidden) closeOv(confirmOv);
+  else if (!viewerOv.hidden) closeOv(viewerOv);
+});
+[viewerOv, confirmOv].forEach((ov) =>
+  ov.addEventListener("click", (e) => { if (e.target === ov || e.target.closest("[data-close]")) closeOv(ov); }));
 let viewerId = null;
 function openViewer(id) {
   const c = CURSOS.find((x) => x.id === id);
@@ -107,25 +127,23 @@ function openViewer(id) {
   $("#viewerName").textContent = c.nombre;
   const vb = $("#viewerVote");
   vb.style.display = myVote ? "none" : "";
-  viewer.showModal();
-  gsap.fromTo(viewer, { scale: .9, opacity: 0 }, { scale: 1, opacity: 1, duration: .3, ease: "power3.out" });
+  openOv(viewerOv);
+  gsap.fromTo("#viewer", { scale: .9, opacity: 0 }, { scale: 1, opacity: 1, duration: .3, ease: "power3.out" });
 }
-viewer.addEventListener("click", (e) => { if (e.target === viewer) viewer.close(); });
-$("#viewerVote").addEventListener("click", () => { viewer.close(); askVote(viewerId); });
+$("#viewerVote").addEventListener("click", () => { closeOv(viewerOv); askVote(viewerId); });
 
 // ---------- votar ----------
-const confirmDlg = $("#confirm");
 let pending = null;
 function askVote(id) {
   if (myVote) return toast("Ya votó desde este celular. ¡Gracias!");
   pending = id;
   $("#confirmTitle").textContent = `¿Votar por ${nombreDe(id)}?`;
-  confirmDlg.showModal();
+  openOv(confirmOv);
 }
-$("#confirmNo").addEventListener("click", () => confirmDlg.close());
+$("#confirmNo").addEventListener("click", () => closeOv(confirmOv));
 $("#confirmYes").addEventListener("click", async () => {
   const id = pending;
-  confirmDlg.close();
+  closeOv(confirmOv);
   try {
     if (backend) await backend.vote(id);
     else counts[id]++; // modo prueba

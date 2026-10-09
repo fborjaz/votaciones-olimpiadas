@@ -80,23 +80,27 @@
     <p>Escuela de Educación Básica N.º 35 “Paz para Vivir” · Milagro, Ecuador</p>
   </footer>
 
-  <dialog id="viewer" class="viewer" aria-label="Pancarta ampliada">
-    <form method="dialog"><button class="close" aria-label="Cerrar">×</button></form>
-    <img id="viewerImg" alt="">
-    <div class="viewer-bar">
-      <strong id="viewerName"></strong>
-      <button class="btn btn-gold" id="viewerVote" type="button">Votar por este curso</button>
+  <div class="overlay" id="viewerOv" hidden>
+    <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Pancarta ampliada">
+      <button class="close" type="button" data-close aria-label="Cerrar">×</button>
+      <img id="viewerImg" alt="">
+      <div class="viewer-bar">
+        <strong id="viewerName"></strong>
+        <button class="btn btn-gold" id="viewerVote" type="button">Votar por este curso</button>
+      </div>
     </div>
-  </dialog>
+  </div>
 
-  <dialog id="confirm" class="confirm" aria-labelledby="confirmTitle">
-    <h3 id="confirmTitle">¿Votar por el curso?</h3>
-    <p>Su voto no se puede cambiar.</p>
-    <div class="confirm-actions">
-      <button class="btn btn-ghost" id="confirmNo" type="button">Volver</button>
-      <button class="btn btn-gold" id="confirmYes" type="button">Sí, votar</button>
+  <div class="overlay" id="confirmOv" hidden>
+    <div class="confirm" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <h3 id="confirmTitle">¿Votar por el curso?</h3>
+      <p>Su voto no se puede cambiar.</p>
+      <div class="confirm-actions">
+        <button class="btn btn-ghost" id="confirmNo" type="button">Volver</button>
+        <button class="btn btn-gold" id="confirmYes" type="button">Sí, votar</button>
+      </div>
     </div>
-  </dialog>
+  </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <canvas id="confetti" aria-hidden="true"></canvas>
