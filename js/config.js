@@ -25,3 +25,8 @@ export const FIREBASE_CONFIG = {
   messagingSenderId: "693167523412",
   appId: "1:693167523412:web:52d60a139112405c0fcfc1",
 };
+
+// 3) Hora en que se muestran los resultados (hora de Guayaquil, UTC-5).
+//    Antes de esa hora todos ven un cronómetro en lugar de los números.
+export const RESULTADOS_A = "2026-10-09T10:30:00-05:00";
+export const RESULTADOS_TEXTO = "10:30 a. m.";

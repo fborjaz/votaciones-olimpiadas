@@ -23,6 +23,8 @@
 
   <main>
     <section class="hero" id="inicio">
+      <div class="bunting" data-bunting aria-hidden="true"></div>
+      <div class="hang-medals" id="hangMedals" aria-hidden="true"></div>
       <div class="hero-copy">
         <p class="hero-kicker">Olimpiadas escolares</p>
         <h1><span class="line">Cada curso</span> <span class="line">hizo una pancarta.</span> <span class="line">Usted elige</span> <span class="line">la mejor.</span></h1>
@@ -32,23 +34,29 @@
       <div class="hero-logo">
         <img src="img/LOGO1.png" alt="Escudo de la Escuela de Educación Básica N.º 35 Paz para Vivir" width="520">
       </div>
-      <div class="track" aria-hidden="true"></div>
+      <div class="track" aria-hidden="true"><div class="runners" id="runners"></div></div>
     </section>
 
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
     <section class="school" id="escuela">
+      <div class="stars" data-stars="6" aria-hidden="true"></div>
       <div class="school-inner">
         <h2>Escuela de Educación Básica N.º 35 “Paz para Vivir”</h2>
         <p class="lead">Milagro, Ecuador. Un lugar donde niñas y niños aprenden, juegan y construyen paz todos los días.</p>
         <div class="facts">
           <article>
+            <span class="ico" aria-hidden="true">🏫</span>
             <h3>Quiénes somos</h3>
             <p>Una escuela de educación básica de Milagro que acompaña a cada estudiante y a su familia.</p>
           </article>
           <article>
+            <span class="ico" aria-hidden="true">🔥</span>
             <h3>Por qué estas olimpiadas</h3>
             <p>Para que los cursos compitan, se apoyen entre sí y compartan una jornada con sus familias.</p>
           </article>
           <article>
+            <span class="ico" aria-hidden="true">🗳️</span>
             <h3>Cómo votar</h3>
             <p>Toque la pancarta para verla grande. Elija su favorita y confirme. Cada celular vota una vez.</p>
           </article>
@@ -57,6 +65,8 @@
     </section>
 
     <section class="vote" id="votar">
+      <div class="bunting bunting-dark" data-bunting aria-hidden="true"></div>
+      <div class="stars" data-stars="5" aria-hidden="true"></div>
       <div class="vote-head">
         <h2>Las nueve pancartas</h2>
         <p id="voteStatus" class="status" role="status">Toque una pancarta para verla en grande.</p>
@@ -65,12 +75,23 @@
       <div class="grid" id="grid"></div>
     </section>
 
-    <section class="results" id="resultados" hidden>
+    <section class="results" id="resultados">
+      <div class="finish" aria-hidden="true"></div>
       <div class="results-inner">
-        <h2>Así va la carrera</h2>
-        <p class="status" id="resultsNote">Gracias por votar. Los números se actualizan en vivo.</p>
-        <ol class="lanes" id="lanes"></ol>
-        <p class="total"><span id="totalVotes">0</span> votos en total</p>
+        <h2 id="resultsTitle">Los resultados se muestran a las 10:30 a. m.</h2>
+        <p class="status" id="resultsNote">Cada voto cuenta. Falta poco para saber qué curso ganó.</p>
+        <div class="clock-wrap" id="clockWrap">
+          <div class="clock" id="clock" role="timer" aria-label="Tiempo que falta para los resultados">
+            <div class="unit" data-u="d" hidden><span class="num">00</span><span class="lbl">días</span></div>
+            <div class="unit" data-u="h"><span class="num">00</span><span class="lbl">horas</span></div>
+            <div class="unit" data-u="m"><span class="num">00</span><span class="lbl">minutos</span></div>
+            <div class="unit" data-u="s"><span class="num">00</span><span class="lbl">segundos</span></div>
+          </div>
+        </div>
+        <div id="lanesWrap" hidden>
+          <ol class="lanes" id="lanes"></ol>
+          <p class="total"><span id="totalVotes">0</span> votos en total</p>
+        </div>
       </div>
     </section>
   </main>

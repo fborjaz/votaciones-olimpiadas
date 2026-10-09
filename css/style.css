@@ -12,6 +12,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
@@ -52,21 +53,45 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.02; margin: 0; letter-s
     radial-gradient(60rem 36rem at 85% 40%, #1d7fd6 0%, transparent 60%),
     var(--navy);
   display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 2rem;
-  padding: clamp(2.5rem, 7vw, 6rem) clamp(1rem, 6vw, 6rem) clamp(4.5rem, 9vw, 7rem);
+  padding: clamp(5rem, 9vw, 7.5rem) clamp(1rem, 6vw, 6rem) clamp(10rem, 14vw, 11.5rem);
 }
 .hero-kicker { margin: 0 0 1rem; font-weight: 700; color: var(--sun); }
 .hero h1 { font-size: clamp(2.6rem, 7.2vw, 6rem); font-weight: 800; }
 .hero h1 .line { display: inline-block; }
 .hero-sub { max-width: 32rem; font-size: 1.2rem; margin: 1.5rem 0 2rem; color: #d4e6fb; }
 .hero-logo img { width: min(100%, 32rem); margin-inline: auto; filter: drop-shadow(0 1.5rem 2rem rgba(0,0,0,.35)); }
-/* pista de atletismo: carriles al borde inferior */
+/* pista de atletismo: 3 carriles con niños corriendo */
 .track {
-  position: absolute; inset: auto 0 0 0; height: 3rem;
+  position: absolute; inset: auto 0 0 0; height: 8rem;
   background:
-    repeating-linear-gradient(to bottom, var(--flag) 0 .5rem, #fff .5rem .6rem, var(--flag) .6rem 1.4rem, #fff 1.4rem 1.5rem);
-  background-size: 100% 1.5rem;
-  opacity: .95;
+    repeating-linear-gradient(to bottom, transparent 0 calc(2.67rem - 3px), rgba(255,255,255,.9) calc(2.67rem - 3px) 2.67rem),
+    linear-gradient(#e0413f, #c32226);
+  border-top: 4px solid #fff;
 }
+.runners { position: absolute; inset: 0; }
+.runner-kid { position: absolute; left: 0; will-change: transform; }
+.runner-kid svg { display: block; height: 100%; width: auto; overflow: visible; }
+
+/* banderines */
+.bunting { position: absolute; top: 0; left: 0; right: 0; height: 3.4rem; display: flex; overflow: hidden; z-index: 1; pointer-events: none; }
+.bunting::before { content: ""; position: absolute; top: .35rem; left: 0; right: 0; height: 2px; background: rgba(255,255,255,.55); }
+.bunting-dark::before { background: #7a5a2a; }
+.flag { flex: 0 0 2.6rem; height: 2.6rem; margin: .4rem .1rem 0; transform-origin: 50% 0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+
+/* medallas colgadas */
+.hang-medals { position: absolute; top: 3rem; right: clamp(1rem, 4vw, 4rem); display: flex; gap: .9rem; z-index: 1; pointer-events: none; }
+.hang-medals svg { width: 3.4rem; height: auto; transform-origin: 50% 0; display: block; filter: drop-shadow(0 .3rem .3rem rgba(0,0,0,.3)); }
+
+/* cinta de valores */
+.ticker { overflow: hidden; background: var(--sun); color: var(--navy-deep); border-block: 4px solid var(--navy-deep); }
+.ticker-track { display: flex; width: max-content; will-change: transform; }
+.ticker-track span { padding: .55rem 1.6rem; font: 800 1.15rem/1.2 var(--display); white-space: nowrap; }
+
+/* estrellas decorativas */
+.stars { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.star { position: absolute; width: var(--s, 2rem); height: var(--s, 2rem); opacity: .55; }
+.school, .vote { position: relative; }
+.school-inner, .vote-head, .grid { position: relative; z-index: 1; }
 
 /* ---------- school ---------- */
 .school { padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 6vw, 6rem); background: var(--sky-pale); }
@@ -74,6 +99,7 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.02; margin: 0; letter-s
 .school h2 { font-size: clamp(1.9rem, 4.5vw, 3.4rem); color: var(--navy); max-width: 22ch; }
 .lead { font-size: 1.25rem; max-width: 42rem; margin: 1.25rem 0 2.5rem; }
 .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+.facts .ico { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: #fff; font-size: 1.5rem; margin-bottom: .75rem; box-shadow: 0 .2rem 0 rgba(10,47,120,.15); }
 .facts article { border-top: 6px solid var(--sun); padding-top: 1rem; }
 .facts article:nth-child(2) { border-color: var(--sky); }
 .facts article:nth-child(3) { border-color: var(--flag); }
@@ -81,7 +107,7 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.02; margin: 0; letter-s
 .facts p { margin: 0; max-width: 34ch; }
 
 /* ---------- votación ---------- */
-.vote { padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 4rem) 5rem; }
+.vote { padding: clamp(5.5rem, 9vw, 7.5rem) clamp(1rem, 4vw, 4rem) 5rem; }
 .vote-head { max-width: 70rem; margin: 0 auto 2.5rem; }
 .vote-head h2 { font-size: clamp(2rem, 5vw, 3.8rem); color: var(--navy); }
 .status { margin: .75rem 0 0; font-weight: 600; color: #35507f; }
@@ -116,7 +142,18 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.02; margin: 0; letter-s
 body.has-voted .card:not(.voted) .btn { display: none; }
 
 /* ---------- resultados: carriles ---------- */
-.results { background: var(--navy); color: #fff; padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 4rem); }
+.results { position: relative; background: var(--navy); color: #fff; padding: clamp(5rem, 9vw, 7rem) clamp(1rem, 4vw, 4rem) clamp(3rem, 8vw, 6rem); }
+.finish { position: absolute; top: 0; left: 0; right: 0; height: 1.8rem; background: conic-gradient(#fff 25%, var(--navy-deep) 0 50%, #fff 0 75%, var(--navy-deep) 0) 0 0 / 1.8rem 1.8rem; }
+.clock-wrap { margin-top: 2.5rem; }
+.clock { display: flex; flex-wrap: wrap; gap: .8rem; }
+.unit { min-width: 6.2rem; padding: 1rem .8rem .7rem; text-align: center; background: var(--navy-deep); border: 3px solid rgba(255,255,255,.14); border-radius: .7rem; box-shadow: 0 .35rem 0 rgba(0,0,0,.25); }
+.unit .num { display: block; font: 800 clamp(2.8rem, 9vw, 4.6rem)/1 var(--display); color: var(--sun); font-variant-numeric: tabular-nums; }
+.unit .lbl { display: block; margin-top: .35rem; font-size: .95rem; font-weight: 600; color: #b9d4f5; }
+.rank { width: 1.25rem; margin-right: .6rem; display: inline-flex; vertical-align: middle; }
+.rank svg { width: 100%; height: auto; }
+.lane .label > span:first-child { display: inline-flex; align-items: center; }
+.medal-hang { position: absolute; top: 1.6rem; right: .9rem; width: 2.6rem; z-index: 3; transform-origin: 50% 0; pointer-events: none; filter: drop-shadow(0 .25rem .25rem rgba(0,0,0,.3)); }
+.medal-hang svg { width: 100%; height: auto; display: block; }
 .results-inner { max-width: 60rem; margin-inline: auto; }
 .results h2 { font-size: clamp(2rem, 5vw, 3.8rem); }
 .results .status { color: #b9d4f5; }
@@ -173,12 +210,15 @@ footer p { margin: 0; }
   .hero-logo img { width: min(62%, 15rem); margin-inline: 0; }
   .facts { grid-template-columns: 1fr; gap: 1.75rem; }
   .brand img { height: 2rem; }
+  .hang-medals svg { width: 2.6rem; }
+  .unit { min-width: 4.6rem; }
 }
 @media (max-width: 34rem) {
   .grid { grid-template-columns: 1fr; }
   .viewer-bar { flex-direction: column; align-items: stretch; text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .runners, .hang-medals { display: none; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
