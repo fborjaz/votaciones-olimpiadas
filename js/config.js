@@ -28,8 +28,8 @@ export const FIREBASE_CONFIG = {
 
 // 3) Hora en que se muestran los resultados (hora de Guayaquil, UTC-5).
 //    Antes de esa hora todos ven un cronómetro en lugar de los números.
-export const RESULTADOS_A = "2026-10-09T10:30:00-05:00";
-export const RESULTADOS_TEXTO = "10:30 a. m.";
+export const RESULTADOS_A = "2026-10-09T11:00:00-05:00";
+export const RESULTADOS_TEXTO = "11:00 a. m.";
 
 // 4) Versión de la votación. Si la cambias (por ejemplo "2" → "3"), todos los
 //    celulares olvidan su voto anterior y pueden votar de nuevo.
