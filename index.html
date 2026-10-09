@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Olimpiadas · Vota por la mejor pancarta · Escuela Paz para Vivir</title>
+  <meta name="description" content="Padres de familia: voten por la mejor pancarta de las Olimpiadas de la Escuela de Educación Básica N.º 35 Paz para Vivir, Milagro.">
+  <meta name="theme-color" content="#0a2f78">
+  <link rel="icon" href="img/LOGO1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <a href="#inicio" class="brand" aria-label="Paz para Vivir, inicio"><img src="img/LETRAS-PPV.png" alt="Paz para Vivir, Milagro - Ecuador"></a>
+    <nav aria-label="Secciones">
+      <a href="#escuela">La escuela</a>
+      <a href="#votar" class="nav-cta">Votar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="hero-kicker">Olimpiadas escolares</p>
+        <h1><span class="line">Cada curso</span> <span class="line">hizo una pancarta.</span> <span class="line">Usted elige</span> <span class="line">la mejor.</span></h1>
+        <p class="hero-sub">Mire las nueve pancartas y vote una sola vez desde este celular.</p>
+        <a class="btn btn-gold" href="#votar">Ver las pancartas</a>
+      </div>
+      <div class="hero-logo">
+        <img src="img/LOGO1.png" alt="Escudo de la Escuela de Educación Básica N.º 35 Paz para Vivir" width="520">
+      </div>
+      <div class="track" aria-hidden="true"></div>
+    </section>
+
+    <section class="school" id="escuela">
+      <div class="school-inner">
+        <h2>Escuela de Educación Básica N.º 35 “Paz para Vivir”</h2>
+        <p class="lead">Milagro, Ecuador. Un lugar donde niñas y niños aprenden, juegan y construyen paz todos los días.</p>
+        <div class="facts">
+          <article>
+            <h3>Quiénes somos</h3>
+            <p>Una escuela de educación básica de Milagro que acompaña a cada estudiante y a su familia.</p>
+          </article>
+          <article>
+            <h3>Por qué estas olimpiadas</h3>
+            <p>Para que los cursos compitan, se apoyen entre sí y compartan una jornada con sus familias.</p>
+          </article>
+          <article>
+            <h3>Cómo votar</h3>
+            <p>Toque la pancarta para verla grande. Elija su favorita y confirme. Cada celular vota una vez.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="vote" id="votar">
+      <div class="vote-head">
+        <h2>Las nueve pancartas</h2>
+        <p id="voteStatus" class="status" role="status">Toque una pancarta para verla en grande.</p>
+      </div>
+      <div class="rope" aria-hidden="true"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="results" id="resultados" hidden>
+      <div class="results-inner">
+        <h2>Así va la carrera</h2>
+        <p class="status" id="resultsNote">Gracias por votar. Los números se actualizan en vivo.</p>
+        <ol class="lanes" id="lanes"></ol>
+        <p class="total"><span id="totalVotes">0</span> votos en total</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <img src="img/LOGO1.png" alt="" width="56">
+    <p>Escuela de Educación Básica N.º 35 “Paz para Vivir” · Milagro, Ecuador</p>
+  </footer>
+
+  <dialog id="viewer" class="viewer" aria-label="Pancarta ampliada">
+    <form method="dialog"><button class="close" aria-label="Cerrar">×</button></form>
+    <img id="viewerImg" alt="">
+    <div class="viewer-bar">
+      <strong id="viewerName"></strong>
+      <button class="btn btn-gold" id="viewerVote" type="button">Votar por este curso</button>
+    </div>
+  </dialog>
+
+  <dialog id="confirm" class="confirm" aria-labelledby="confirmTitle">
+    <h3 id="confirmTitle">¿Votar por el curso?</h3>
+    <p>Su voto no se puede cambiar.</p>
+    <div class="confirm-actions">
+      <button class="btn btn-ghost" id="confirmNo" type="button">Volver</button>
+      <button class="btn btn-gold" id="confirmYes" type="button">Sí, votar</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
